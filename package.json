@@ -1,0 +1,23 @@
+{
+  "name": "tearcopy-workspace",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "playground"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w playground",
+    "build": "npm run build -w tearcopy && npm run build -w playground",
+    "typecheck": "tsc -p packages/tearcopy --noEmit && tsc -p playground --noEmit",
+    "test": "vitest run && playwright test",
+    "test:unit": "vitest run",
+    "test:browser": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.1",
+    "happy-dom": "^15.11.7",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.8"
+  }
+}
